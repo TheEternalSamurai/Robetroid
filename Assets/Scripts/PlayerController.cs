@@ -7,11 +7,14 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 10f;
     public float maxJumpTime = 1f;
     public Transform groundCheck;
+    public Animator animator;
 
     private float jumpTime = 0f;
     private bool isGrounded = false;
     private float curSpeed = 0f;
+    private bool isMoving = false;
     private bool pressedJumpButton = false;
+    private bool shoot = false;
     private bool jump = false;
     private Rigidbody2D rigBody;
     private SpriteRenderer spriteRenderer;
@@ -24,12 +27,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        if (isMoving = Input.GetKey(KeyCode.RightArrow))
         {
             curSpeed = speed;
             spriteRenderer.flipX = false;
         }
-        else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        else if (isMoving = Input.GetKey(KeyCode.LeftArrow))
         {
             curSpeed = -speed;
             spriteRenderer.flipX = true;
@@ -37,7 +40,12 @@ public class PlayerController : MonoBehaviour
         else
             curSpeed = 0f;
 
-        pressedJumpButton = Input.GetKey(KeyCode.Space);
+        shoot = Input.GetKeyDown(KeyCode.Space);
+        pressedJumpButton = Input.GetKey(KeyCode.UpArrow);
+
+        animator.SetBool("isMoving", isMoving);
+        animator.SetBool("shoot", shoot);
+        animator.SetBool("isJumping", !isGrounded);
     }
 
     private void FixedUpdate()
