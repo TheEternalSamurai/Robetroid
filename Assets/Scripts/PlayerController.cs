@@ -8,7 +8,10 @@ public class PlayerController : MonoBehaviour
     public float maxJumpTime = 1f;
     public Transform groundCheck;
     public Animator animator;
+    public GameObject plazmaBullet;
+    public Transform firePoint;
 
+    private bool isFacingRight = true;
     private float jumpTime = 0f;
     private bool isGrounded = false;
     private float curSpeed = 0f;
@@ -30,17 +33,30 @@ public class PlayerController : MonoBehaviour
         if (isMoving = Input.GetKey(KeyCode.RightArrow))
         {
             curSpeed = speed;
-            spriteRenderer.flipX = false;
+
+            if (!isFacingRight)
+            {
+                transform.Rotate(0f, 180f, 0f);
+                isFacingRight = !isFacingRight;
+            }
         }
         else if (isMoving = Input.GetKey(KeyCode.LeftArrow))
         {
             curSpeed = -speed;
-            spriteRenderer.flipX = true;
+            if (isFacingRight)
+            {
+                transform.Rotate(0f, 180f, 0f);
+                isFacingRight = !isFacingRight;
+            }
         }
         else
             curSpeed = 0f;
 
-        shoot = Input.GetKeyDown(KeyCode.Space);
+        if (shoot = Input.GetKeyDown(KeyCode.Space))
+        {
+            Shoot();
+        }
+        
         pressedJumpButton = Input.GetKey(KeyCode.UpArrow);
 
         animator.SetBool("isMoving", isMoving);
@@ -67,5 +83,10 @@ public class PlayerController : MonoBehaviour
                 rigBody.velocity = new Vector2(rigBody.velocity.x, jumpForce);
             }
         }
+    }
+
+    private void Shoot()
+    {
+        Instantiate(plazmaBullet, firePoint.position, firePoint.rotation);
     }
 }

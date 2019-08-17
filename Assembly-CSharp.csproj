@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\BackgroundParallax.cs" />
      <Compile Include="Assets\Scripts\CameraBounds.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\PlazmaBullet.cs" />
      <Compile Include="Assets\Tiles\Rule Override Tile\Scripts\RuleOverrideTile.cs" />
      <Compile Include="Assets\Tiles\Rule Tile\Scripts\RuleTile.cs" />
      <None Include="Assets\Tiles\Rule Tile\ScriptTemplates\NewCustomRuleTile.cs.txt" />
