@@ -77,7 +77,6 @@ public class PlayerController : MonoBehaviour
         if (jump)
         {
             jumpTime += Time.fixedDeltaTime;
-            Debug.Log(jumpTime);
             if (jump = jumpTime < maxJumpTime && pressedJumpButton)
             {
                 rigBody.velocity = new Vector2(rigBody.velocity.x, jumpForce);

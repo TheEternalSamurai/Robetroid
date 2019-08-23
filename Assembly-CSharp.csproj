@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\EnemyDamage.cs" />
      <Compile Include="Assets\Scripts\Patrol.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\PlayerDamage.cs" />
      <Compile Include="Assets\Scripts\PlazmaBullet.cs" />
      <Compile Include="Assets\Tiles\Rule Override Tile\Scripts\RuleOverrideTile.cs" />
      <Compile Include="Assets\Tiles\Rule Tile\Scripts\RuleTile.cs" />
