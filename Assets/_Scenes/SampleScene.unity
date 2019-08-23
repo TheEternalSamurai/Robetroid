@@ -58267,7 +58267,9 @@ GameObject:
   - component: {fileID: 1924879156}
   - component: {fileID: 1924879155}
   - component: {fileID: 1924879154}
+  - component: {fileID: 1924879158}
   - component: {fileID: 1924879153}
+  - component: {fileID: 1924879157}
   m_Layer: 0
   m_Name: SnakeBot
   m_TagString: Untagged
@@ -58366,13 +58368,66 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1924879152}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.51, y: -5.03, z: 0}
+  m_LocalPosition: {x: 7.71, y: -1.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400666047}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1924879157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924879152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86813193d596c0c4a88eb50d5bad4931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteMaterial: {fileID: 2100000, guid: 116cfcf32d2a10e40bbde30565ae4d61, type: 2}
+  flashDurationTime: 0.2
+  maxHealth: 3
+--- !u!60 &1924879158
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924879152}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.21992302, y: 0.9892063}
+      - {x: 0.05743313, y: 0.8010733}
+      - {x: -0.11387062, y: -0.3978541}
+      - {x: -0.858171, y: -0.49545646}
+      - {x: -1.0361676, y: -0.92766285}
+      - {x: -0.69271183, y: -0.8307009}
+      - {x: 0.102451324, y: -0.9579568}
+      - {x: 0.4968195, y: -0.87341}
+      - {x: 0.6475172, y: -0.4241302}
+      - {x: 0.764905, y: -0.33565164}
+      - {x: 0.76961994, y: 0.06466794}
+      - {x: 0.9744024, y: 0.30468845}
+      - {x: 0.8372421, y: 0.9095788}
 --- !u!1 &2003753022
 GameObject:
   m_ObjectHideFlags: 0
