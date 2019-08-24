@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -642327717791489089}
   - component: {fileID: -185916234082087231}
   - component: {fileID: -7772722002593494844}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlasmaBullet_3
   m_TagString: PlasmaBullet
   m_Icon: {fileID: 0}
@@ -132,3 +132,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88d40d02e97060e428adc02bdb73cef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 20

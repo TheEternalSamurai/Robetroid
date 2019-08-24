@@ -57253,7 +57253,7 @@ GameObject:
   - component: {fileID: 453147193}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57438,7 +57438,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
-  anim: {fileID: 0}
+  knockBackTime: 1
+  damageThrust: {x: 2, y: 2}
+  anim: {fileID: 453147192}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
