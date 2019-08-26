@@ -57439,6 +57439,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   knockBackTime: 1
+  invulnerableTime: 3
+  deathTime: 3
   damageThrust: {x: 2, y: 2}
   anim: {fileID: 453147192}
 --- !u!1 &519420028
@@ -58022,7 +58024,7 @@ GameObject:
   - component: {fileID: 1531374622}
   m_Layer: 0
   m_Name: StageBounds
-  m_TagString: Untagged
+  m_TagString: StageBounds
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

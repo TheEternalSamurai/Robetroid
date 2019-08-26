@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlasmaBullet
   - Enemy
+  - StageBounds
   layers:
   - Default
   - TransparentFX

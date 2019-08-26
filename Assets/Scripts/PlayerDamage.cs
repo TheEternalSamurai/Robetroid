@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerDamage : MonoBehaviour
 {
     public int maxHealth;
     public float knockBackTime;
+    public float invulnerableTime;
+    public float deathTime;
     public Vector2 damageThrust;
     public Animator anim;
 
@@ -29,11 +32,19 @@ public class PlayerDamage : MonoBehaviour
     {
         if (collider.CompareTag("Enemy") && !hasBeenHit)
         {
-            StartCoroutine("KnockBack");
             StartCoroutine("ReceiveDamage");
-            if (healthRemaining <= 0)
-                KillSelf();
+
+            if (healthRemaining > 0)
+                StartCoroutine("KnockBack");
+            else
+                StartCoroutine("KillSelf");
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.CompareTag("StageBounds"))
+            StartCoroutine("KillSelf");
     }
 
     private IEnumerator KnockBack()
@@ -57,16 +68,23 @@ public class PlayerDamage : MonoBehaviour
         Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), true);
         hasBeenHit = true;
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(invulnerableTime);
 
         Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), false);
         hasBeenHit = false;
     }
 
-    private void KillSelf()
+    private IEnumerator KillSelf()
     {
+        PlayerController controller = GetComponent<PlayerController>();
+        controller.enabled = false;
+        rigBody.bodyType = RigidbodyType2D.Static;
+
         GameObject explosion = (GameObject)Instantiate(explosionRef);
         explosion.transform.position = transform.position;
-        Destroy(gameObject);
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
+        yield return new WaitForSeconds(deathTime);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
