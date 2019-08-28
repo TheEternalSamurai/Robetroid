@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerDamage : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class PlayerDamage : MonoBehaviour
     public float deathTime;
     public Vector2 damageThrust;
     public Animator anim;
+
+    [Header("UI")]
+    public Image healthBar;
 
     private Rigidbody2D rigBody;
     private bool hasBeenHit;
@@ -67,6 +71,7 @@ public class PlayerDamage : MonoBehaviour
         healthRemaining--;
         Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), true);
         hasBeenHit = true;
+        healthBar.fillAmount = (float)healthRemaining / (float)maxHealth;
 
         yield return new WaitForSeconds(invulnerableTime);
 
