@@ -2,9 +2,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerDamage : MonoBehaviour
 {
+    public int startLives;
     public int maxHealth;
     public float knockBackTime;
     public float invulnerableTime;
@@ -14,18 +16,31 @@ public class PlayerDamage : MonoBehaviour
 
     [Header("UI")]
     public Image healthBar;
+    public TextMeshProUGUI livesText;
 
     private Rigidbody2D rigBody;
     private bool hasBeenHit;
+    private bool hasDied;
+    private int livesRemaining;
     private int healthRemaining;
     private SpriteRenderer spriteRenderer;
     private Material defaultMaterial;
     private Object explosionRef;
 
+    private void Awake()
+    {
+        if (!PlayerPrefs.HasKey("PlayerCurrentLives"))
+            PlayerPrefs.SetInt("PlayerCurrentLives", startLives);
+
+        livesRemaining = PlayerPrefs.GetInt("PlayerCurrentLives");
+        livesText.SetText("x " + livesRemaining);
+    }
+
     private void Start()
     {
         rigBody = GetComponent<Rigidbody2D>();
         hasBeenHit = false;
+        hasDied = false;
         spriteRenderer = GetComponent<SpriteRenderer>();
         healthRemaining = maxHealth;
         defaultMaterial = spriteRenderer.material;
@@ -48,7 +63,10 @@ public class PlayerDamage : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collider)
     {
         if (collider.CompareTag("StageBounds"))
+        {
             StartCoroutine("KillSelf");
+        }
+            
     }
 
     private IEnumerator KnockBack()
@@ -81,15 +99,30 @@ public class PlayerDamage : MonoBehaviour
 
     private IEnumerator KillSelf()
     {
-        PlayerController controller = GetComponent<PlayerController>();
-        controller.enabled = false;
-        rigBody.bodyType = RigidbodyType2D.Static;
+        if (hasDied = !hasDied)
+        {
+            PlayerController controller = GetComponent<PlayerController>();
+            controller.enabled = false;
+            rigBody.bodyType = RigidbodyType2D.Static;
 
-        GameObject explosion = (GameObject)Instantiate(explosionRef);
-        explosion.transform.position = transform.position;
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            GameObject explosion = (GameObject)Instantiate(explosionRef);
+            explosion.transform.position = transform.position;
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
 
-        yield return new WaitForSeconds(deathTime);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            yield return new WaitForSeconds(deathTime);
+            LoseLife();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
+    private void LoseLife()
+    {
+        livesRemaining--;
+        livesText.SetText("x " + livesRemaining.ToString());
+
+        if (livesRemaining < 0)
+            PlayerPrefs.DeleteKey("PlayerCurrentLives");
+        else
+            PlayerPrefs.SetInt("PlayerCurrentLives", livesRemaining);
     }
 }
