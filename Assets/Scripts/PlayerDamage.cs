@@ -63,10 +63,7 @@ public class PlayerDamage : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collider)
     {
         if (collider.CompareTag("StageBounds"))
-        {
             StartCoroutine("KillSelf");
-        }
-            
     }
 
     private IEnumerator KnockBack()
@@ -99,11 +96,13 @@ public class PlayerDamage : MonoBehaviour
 
     private IEnumerator KillSelf()
     {
-        if (hasDied = !hasDied)
+        if (!hasDied)
         {
+            hasDied = true;
             PlayerController controller = GetComponent<PlayerController>();
             controller.enabled = false;
-            rigBody.bodyType = RigidbodyType2D.Static;
+            rigBody.bodyType = RigidbodyType2D.Kinematic;
+            rigBody.velocity = Vector2.zero;
 
             GameObject explosion = (GameObject)Instantiate(explosionRef);
             explosion.transform.position = transform.position;
