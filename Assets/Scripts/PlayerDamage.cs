@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using Collectables;
 
 public class PlayerDamage : MonoBehaviour
 {
@@ -19,11 +20,14 @@ public class PlayerDamage : MonoBehaviour
     public TextMeshProUGUI livesText;
     public Canvas gameOverScreen;
 
+    [HideInInspector]
+    public int livesRemaining;
+    [HideInInspector]
+    public int healthRemaining;
+
     private Rigidbody2D rigBody;
     private bool hasBeenHit;
     private bool hasDied;
-    private int livesRemaining;
-    private int healthRemaining;
     private SpriteRenderer spriteRenderer;
     private Material defaultMaterial;
     private Object explosionRef;
@@ -59,30 +63,23 @@ public class PlayerDamage : MonoBehaviour
             else
                 StartCoroutine("KillSelf");
         }
-        else if (collider.CompareTag("Battery"))
+        else if (collider.CompareTag("Collectable"))
         {
-            AddHealth(collider.gameObject);
+            Gain(collider.gameObject);
             Destroy(collider.gameObject);
         }
+    }
+
+    private void Gain(GameObject collectableObject)
+    {
+        ICollectable collectable = collectableObject.GetComponent<ICollectable>();
+        collectable.Gain(gameObject);
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
         if (collider.CompareTag("StageBounds"))
             StartCoroutine("KillSelf");
-    }
-
-    private void AddHealth(GameObject batteryObject)
-    {
-        Battery battery = batteryObject.GetComponent<Battery>();
-
-        if (healthRemaining < maxHealth && !battery.hasBeenPickedUp)
-        {
-            healthRemaining += battery.healthGain;
-            battery.hasBeenPickedUp = true;
-
-            healthBar.fillAmount = (float)healthRemaining / (float)maxHealth;
-        }
     }
 
     private IEnumerator KnockBack()

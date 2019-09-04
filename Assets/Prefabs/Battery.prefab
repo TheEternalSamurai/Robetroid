@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 3707808490846719357}
   - component: {fileID: 2287353147878897824}
   - component: {fileID: -5449617763204290130}
-  - component: {fileID: 2741751001314068196}
+  - component: {fileID: 6047419045778994093}
   m_Layer: 0
   m_Name: Battery
-  m_TagString: Battery
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,7 +108,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.94, y: 0.59}
   m_EdgeRadius: 0
---- !u!114 &2741751001314068196
+--- !u!114 &6047419045778994093
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,7 +117,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6297744097253876685}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdc5b954cb8a53f4493cf18525979d25, type: 3}
+  m_Script: {fileID: 11500000, guid: 58abca65ee7b58b479459f10bab5ed64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthGain: 1
+  hasBeenPickedUp: 0

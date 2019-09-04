@@ -7,7 +7,7 @@ TagManager:
   - PlasmaBullet
   - Enemy
   - StageBounds
-  - Battery
+  - Collectable
   layers:
   - Default
   - TransparentFX
