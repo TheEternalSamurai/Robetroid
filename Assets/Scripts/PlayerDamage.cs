@@ -17,6 +17,7 @@ public class PlayerDamage : MonoBehaviour
     [Header("UI")]
     public Image healthBar;
     public TextMeshProUGUI livesText;
+    public Canvas gameOverScreen;
 
     private Rigidbody2D rigBody;
     private bool hasBeenHit;
@@ -110,7 +111,11 @@ public class PlayerDamage : MonoBehaviour
 
             yield return new WaitForSeconds(deathTime);
             LoseLife();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+            if (livesRemaining < 0)
+                gameOverScreen.gameObject.SetActive(true);
+            else
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
