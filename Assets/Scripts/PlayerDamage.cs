@@ -59,12 +59,30 @@ public class PlayerDamage : MonoBehaviour
             else
                 StartCoroutine("KillSelf");
         }
+        else if (collider.CompareTag("Battery"))
+        {
+            AddHealth(collider.gameObject);
+            Destroy(collider.gameObject);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
         if (collider.CompareTag("StageBounds"))
             StartCoroutine("KillSelf");
+    }
+
+    private void AddHealth(GameObject batteryObject)
+    {
+        Battery battery = batteryObject.GetComponent<Battery>();
+
+        if (healthRemaining < maxHealth && !battery.hasBeenPickedUp)
+        {
+            healthRemaining += battery.healthGain;
+            battery.hasBeenPickedUp = true;
+
+            healthBar.fillAmount = (float)healthRemaining / (float)maxHealth;
+        }
     }
 
     private IEnumerator KnockBack()
