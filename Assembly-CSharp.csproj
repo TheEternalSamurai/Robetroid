@@ -58,8 +58,8 @@
      <Compile Include="Assets\Scripts\BackgroundParallax.cs" />
      <Compile Include="Assets\Scripts\Battery.cs" />
      <Compile Include="Assets\Scripts\CameraBounds.cs" />
-     <Compile Include="Assets\Scripts\Collectables.cs" />
      <Compile Include="Assets\Scripts\EnemyDamage.cs" />
+     <Compile Include="Assets\Scripts\ICollectable.cs" />
      <Compile Include="Assets\Scripts\LifeCollectable.cs" />
      <Compile Include="Assets\Scripts\Patrol.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
