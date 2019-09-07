@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  groundDetectionDistance: 2
+  groundDetectionDistance: 0.5
   groundCheck: {fileID: 3477021091558161246}
 --- !u!114 &3477021092039067092
 MonoBehaviour:
