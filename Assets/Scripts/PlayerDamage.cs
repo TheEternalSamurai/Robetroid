@@ -54,14 +54,17 @@ public class PlayerDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.CompareTag("Enemy") && !hasBeenHit)
+        if ((collider.CompareTag("EnemyBullet") || collider.CompareTag("Enemy")) && !hasBeenHit)
         {
-            StartCoroutine("ReceiveDamage");
+            StartCoroutine("ReceiveDamage");    
 
             if (healthRemaining > 0)
                 StartCoroutine("KnockBack");
             else
                 StartCoroutine("KillSelf");
+
+            if (collider.CompareTag("EnemyBullet"))
+                Destroy(collider.gameObject);
         }
         else if (collider.CompareTag("Collectable"))
         {

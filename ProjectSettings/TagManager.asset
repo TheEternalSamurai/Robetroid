@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - StageBounds
   - Collectable
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
