@@ -23,7 +23,6 @@ public class EnemyDamage : MonoBehaviour
     {
         if (collider.CompareTag("PlasmaBullet"))
         {
-            Debug.Log("PlasmaBullet");
             Destroy(collider.gameObject);
             healthRemaining--;
             spriteRenderer.material = whiteMaterial;

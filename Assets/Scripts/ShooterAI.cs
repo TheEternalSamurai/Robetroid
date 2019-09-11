@@ -8,17 +8,30 @@ public class ShooterAI : MonoBehaviour
     public int bulletsShotPerRound;
     public int shootWaitTime;
 
+    private bool canShoot;
     private float timeSinceLastShot = 0f;
 
     private void Update()
     {
-        if (timeSinceLastShot >= shootWaitTime)
+        if (canShoot && timeSinceLastShot >= shootWaitTime)
         {
             StartCoroutine(Shoot());
             timeSinceLastShot = 0f;
         }
 
         timeSinceLastShot += Time.deltaTime;
+    }
+
+    private void OnBecameVisible()
+    {
+        if (Camera.current.tag == "MainCamera")
+            canShoot = true;
+    }
+
+    private void OnBecameInvisible()
+    {
+        if (Camera.current.tag == "MainCamera")
+            canShoot = false;
     }
 
     private IEnumerator Shoot()

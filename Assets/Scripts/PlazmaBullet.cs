@@ -13,4 +13,10 @@ public class PlazmaBullet : MonoBehaviour
         rigBody = GetComponent<Rigidbody2D>();
         rigBody.velocity = transform.right * speed;
     }
+
+    private void OnBecameInvisible()
+    {
+        if (Camera.current.tag == "MainCamera")
+            Destroy(gameObject);
+    }
 }
