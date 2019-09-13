@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class CameraBounds : MonoBehaviour
 {
-    public float minCameraPosX;
+    public GameObject gameCamera;
+    public GameObject bossConfiner;
 
-    private void Update()
+    private void OnBecameVisible()
     {
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, minCameraPosX, Mathf.Infinity), transform.position.y, transform.position.z);
+        if (Camera.current.tag == "MainCamera")
+        {
+            CinemachineConfiner confiner = gameCamera.GetComponent<CinemachineConfiner>();
+            confiner.m_BoundingShape2D = bossConfiner.GetComponent<Collider2D>();
+        }
     }
 }
