@@ -16,7 +16,7 @@ public class PlazmaBullet : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        if (Camera.current.tag == "MainCamera")
+        if (Camera.current.CompareTag("MainCamera"))
             Destroy(gameObject);
     }
 }

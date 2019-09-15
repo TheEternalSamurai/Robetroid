@@ -24,13 +24,13 @@ public class ShooterAI : MonoBehaviour
 
     private void OnBecameVisible()
     {
-        if (Camera.current.tag == "MainCamera")
+        if (Camera.current.CompareTag("MainCamera"))
             canShoot = true;
     }
 
     private void OnBecameInvisible()
     {
-        if (Camera.current.tag == "MainCamera")
+        if (Camera.current.CompareTag("MainCamera"))
             canShoot = false;
     }
 
