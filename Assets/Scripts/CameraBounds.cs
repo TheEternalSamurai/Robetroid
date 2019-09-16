@@ -11,9 +11,10 @@ public class CameraBounds : MonoBehaviour
     {
         if (Camera.current.CompareTag("MainCamera"))
         {
-            Debug.Log("BossBounds");
             CinemachineVirtualCamera cineCamera = gameCamera.GetComponent<CinemachineVirtualCamera>();
             cineCamera.enabled = false;
+
+            gameObject.GetComponent<PatrolAir>().enabled = true;
         }
     }
 }
