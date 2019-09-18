@@ -406,7 +406,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165139725}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 130.86, y: -8.59, z: -10}
+  m_LocalPosition: {x: 152.4, y: -8.2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1576865697}
@@ -12113,7 +12113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453147185}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 130.86, y: -8.59, z: 0}
+  m_LocalPosition: {x: 152.4, y: -8.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 959998809}
@@ -12390,7 +12390,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 130.86, y: -8.59, z: -10}
+  m_LocalPosition: {x: 152.4, y: -8.2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -14079,6 +14079,7 @@ GameObject:
   - component: {fileID: 1424361749}
   - component: {fileID: 1424361747}
   - component: {fileID: 1424361748}
+  - component: {fileID: 1424361751}
   - component: {fileID: 1424361750}
   m_Layer: 0
   m_Name: BossSprite
@@ -14129,7 +14130,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 2.6666667, y: 2.6666667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -14145,7 +14146,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 6.8555756, y: -2.1751466, z: 151.55287}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2091514385}
   m_Father: {fileID: 1900557959}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14195,7 +14197,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2.6666667, y: 2.6666667}
-    newSize: {x: 0.64, y: 0.64}
+    newSize: {x: 2.6666667, y: 2.6666667}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -14215,10 +14217,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c94c9715e3d12e24ab6dac4b90683faf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
   moveSpots:
   - {fileID: 1301644269}
   - {fileID: 2002766580}
+--- !u!114 &1424361751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424361744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ee3caf2289a8e42908424c54b311e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plazmaBullet: {fileID: 7533265830387625230, guid: 008183fd9821c004ebcc07f97ae85854,
+    type: 3}
+  firePoint: {fileID: 2091514385}
+  bulletsShotPerRound: 5
+  shootWaitTime: 2
 --- !u!4 &1455745784 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2916188150873525341, guid: 221833aa6b6efcb46a87b2daeff32658,
@@ -15558,6 +15577,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 249099267}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2091514384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2091514385}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2091514385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091514384}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1424361746}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &2110268033
 GameObject:
   m_ObjectHideFlags: 0
