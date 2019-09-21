@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyDamage : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class EnemyDamage : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Material defaultMaterial;
     private Object explosionRef;
+
+    [Header("UI")]
+    public Image healthBar;
 
     private void Start()
     {
@@ -26,6 +30,8 @@ public class EnemyDamage : MonoBehaviour
             Destroy(collider.gameObject);
             healthRemaining--;
             spriteRenderer.material = whiteMaterial;
+            if (healthBar != null)
+                healthBar.fillAmount = (float)healthRemaining / (float)maxHealth;
 
             if (healthRemaining <= 0)
                 KillSelf();

@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Cinemachine;
 
 public class CameraBounds : MonoBehaviour
 {
     public GameObject gameCamera;
+    public GameObject healthBarCanvas;
+    public bool showHealthBar;
 
     private void OnBecameVisible()
     {
@@ -15,6 +18,7 @@ public class CameraBounds : MonoBehaviour
             cineCamera.enabled = false;
 
             gameObject.GetComponent<PatrolAir>().enabled = true;
+            healthBarCanvas.SetActive(showHealthBar);
         }
     }
 }
