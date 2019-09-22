@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class EnemyDamage : MonoBehaviour
 {
     public Material whiteMaterial;
     public float flashDurationTime;
     public int maxHealth;
+    public int numOfExplosions = 1;
+    public float timeBetweenExplosions = 0f;
 
     private int healthRemaining;
     private SpriteRenderer spriteRenderer;
@@ -34,7 +37,7 @@ public class EnemyDamage : MonoBehaviour
                 healthBar.fillAmount = (float)healthRemaining / (float)maxHealth;
 
             if (healthRemaining <= 0)
-                KillSelf();
+                StartCoroutine(KillSelf());
             else
                 Invoke("ResetMaterial", flashDurationTime);
         }
@@ -45,10 +48,20 @@ public class EnemyDamage : MonoBehaviour
         spriteRenderer.material = defaultMaterial;
     }
 
-    private void KillSelf()
+    private IEnumerator KillSelf()
     {
-        GameObject explosion = (GameObject)Instantiate(explosionRef);
-        explosion.transform.position = transform.position;
+        if (gameObject.name == "BossSprite")
+        {
+            gameObject.GetComponent<ShooterAI>().enabled = false;
+            gameObject.GetComponent<PatrolAir>().enabled = false;
+        }
+
+        for (int i = 0; i < numOfExplosions; i++)
+        {
+            GameObject explosion = (GameObject)Instantiate(explosionRef);
+            explosion.transform.position = transform.position;
+            yield return new WaitForSeconds(timeBetweenExplosions);
+        }
         Destroy(gameObject);
     }
 }

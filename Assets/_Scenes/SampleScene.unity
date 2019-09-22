@@ -406,7 +406,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165139725}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 109.6, y: -6.8, z: -10}
+  m_LocalPosition: {x: 149.8, y: -8.3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1576865697}
@@ -12188,7 +12188,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453147185}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 109.6, y: -6.8, z: 0}
+  m_LocalPosition: {x: 149.8, y: -8.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 959998809}
@@ -12465,7 +12465,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 109.6, y: -6.8, z: -10}
+  m_LocalPosition: {x: 149.8, y: -8.3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -14355,7 +14355,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whiteMaterial: {fileID: 2100000, guid: 116cfcf32d2a10e40bbde30565ae4d61, type: 2}
   flashDurationTime: 0.2
-  maxHealth: 30
+  maxHealth: 5
+  numOfExplosions: 5
+  timeBetweenExplosions: 1
   healthBar: {fileID: 1684134013}
 --- !u!61 &1424361749
 BoxCollider2D:
