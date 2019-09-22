@@ -62,6 +62,13 @@ public class EnemyDamage : MonoBehaviour
             explosion.transform.position = transform.position;
             yield return new WaitForSeconds(timeBetweenExplosions);
         }
+
         Destroy(gameObject);
+
+        if (gameObject.name == "BossSprite")
+        {
+            FindObjectOfType<AudioManager>().Play("Victory");
+            Time.timeScale = 0f;
+        }
     }
 }
