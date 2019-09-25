@@ -46,7 +46,31 @@ MonoBehaviour:
   sounds:
   - name: Victory
     clip: {fileID: 8300000, guid: d1a194474e95d8d4f820e1b496245b76, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Boss Music
+    clip: {fileID: 8300000, guid: 5f47da7cf514fa04199768f2d6fb6391, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Hit
+    clip: {fileID: 8300000, guid: ada3f8ec89bef234e8ae66fccdc6b389, type: 3}
     volume: 0.7
     pitch: 1
     loop: 0
+    source: {fileID: 0}
+  - name: Explosion
+    clip: {fileID: 8300000, guid: 1ba01ebcc02a21141bfe914e06e279d3, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Stage Music
+    clip: {fileID: 8300000, guid: a6cc81e837c85424c99ba92bde6e4d45, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
     source: {fileID: 0}

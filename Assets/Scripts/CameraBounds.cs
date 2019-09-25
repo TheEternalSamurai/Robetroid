@@ -19,6 +19,9 @@ public class CameraBounds : MonoBehaviour
 
             gameObject.GetComponent<PatrolAir>().enabled = true;
             healthBarCanvas.SetActive(showHealthBar);
+
+            FindObjectOfType<AudioManager>().Stop("Stage Music");
+            FindObjectOfType<AudioManager>().Play("Boss Music");
         }
     }
 }

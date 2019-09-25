@@ -34,12 +34,10 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        Play("MainTheme");
-
         if (SceneManager.GetActiveScene().name != "MainMenu")
-            Play("Rain");
+            Play("Stage Music");
         else
-            Stop("Rain");
+            Stop("Stage Music");
             
     }
 
