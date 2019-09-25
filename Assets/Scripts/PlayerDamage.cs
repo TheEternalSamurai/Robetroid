@@ -106,6 +106,7 @@ public class PlayerDamage : MonoBehaviour
         Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), true);
         hasBeenHit = true;
         healthBar.fillAmount = (float)healthRemaining / (float)maxHealth;
+        FindObjectOfType<AudioManager>().Play("Hit");
 
         yield return new WaitForSeconds(invulnerableTime);
 
@@ -126,6 +127,7 @@ public class PlayerDamage : MonoBehaviour
             GameObject explosion = (GameObject)Instantiate(explosionRef);
             explosion.transform.position = transform.position;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            FindObjectOfType<AudioManager>().Play("Explosion");
 
             yield return new WaitForSeconds(deathTime);
             LoseLife();

@@ -30,17 +30,24 @@ public class EnemyDamage : MonoBehaviour
     {
         if (collider.CompareTag("PlasmaBullet"))
         {
-            Destroy(collider.gameObject);
-            healthRemaining--;
-            spriteRenderer.material = whiteMaterial;
-            if (healthBar != null)
-                healthBar.fillAmount = (float)healthRemaining / (float)maxHealth;
+            Hit(collider);
 
             if (healthRemaining <= 0)
                 StartCoroutine(KillSelf());
             else
                 Invoke("ResetMaterial", flashDurationTime);
         }
+    }
+
+    private void Hit(Collider2D collider)
+    {
+        Destroy(collider.gameObject);
+        healthRemaining--;
+        spriteRenderer.material = whiteMaterial;
+        if (healthBar != null)
+            healthBar.fillAmount = (float)healthRemaining / (float)maxHealth;
+
+        FindObjectOfType<AudioManager>().Play("Hit");
     }
 
     private void ResetMaterial()
@@ -54,12 +61,16 @@ public class EnemyDamage : MonoBehaviour
         {
             gameObject.GetComponent<ShooterAI>().enabled = false;
             gameObject.GetComponent<PatrolAir>().enabled = false;
+
+            FindObjectOfType<AudioManager>().Stop("Boss Music");
         }
 
         for (int i = 0; i < numOfExplosions; i++)
         {
             GameObject explosion = (GameObject)Instantiate(explosionRef);
             explosion.transform.position = transform.position;
+            FindObjectOfType<AudioManager>().Play("Explosion");
+
             yield return new WaitForSeconds(timeBetweenExplosions);
         }
 
