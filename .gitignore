@@ -16,6 +16,9 @@
 # Never ignore Robetroid_Data *.dll files
 !/Robetroid_Data/**/*.dll
 
+# Never ignore MonoBleedingEdge *.dll files
+!/MonoBleedingEdge/*/*.dll
+
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
 
