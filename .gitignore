@@ -13,6 +13,9 @@
 # Never ignore UnityPlayer.dll
 !UnityPlayer.dll
 
+# Never ignore Robetroid_Data *.dll files
+!/[Ro]betroid_Data/**/*.dll
+
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
 
