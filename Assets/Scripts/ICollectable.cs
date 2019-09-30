@@ -2,8 +2,11 @@
 
 namespace Collectables
 {
-    public interface ICollectable
+    public class ICollectable : MonoBehaviour
     {
-        void Gain(GameObject player);
+        public virtual void Gain(GameObject player)
+        {
+            FindObjectOfType<AudioManager>().Play("Collect");
+        }
     }
 }

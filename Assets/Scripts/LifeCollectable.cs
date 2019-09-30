@@ -2,16 +2,17 @@
 
 namespace Collectables
 {
-    public class LifeCollectable : MonoBehaviour, ICollectable
+    public class LifeCollectable : ICollectable
     {
         public int gain = 1;
 
         private bool hasBeenPickedUp = false;
 
-        public void Gain(GameObject player)
+        public override void Gain(GameObject player)
         {
             if (!hasBeenPickedUp)
             {
+                base.Gain(player);
                 PlayerDamage damageScript = player.GetComponent<PlayerDamage>();
                 damageScript.livesRemaining += gain;
 

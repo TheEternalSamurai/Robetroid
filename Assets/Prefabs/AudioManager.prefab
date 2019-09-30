@@ -74,3 +74,9 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: Collect
+    clip: {fileID: 8300000, guid: 878b865a31e82054fb345fd00022843f, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
