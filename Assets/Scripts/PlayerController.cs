@@ -86,6 +86,7 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
+        FindObjectOfType<AudioManager>().Play("Shoot");
         Instantiate(plazmaBullet, firePoint.position, firePoint.rotation);
     }
 }

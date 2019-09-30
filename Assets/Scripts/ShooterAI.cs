@@ -38,6 +38,7 @@ public class ShooterAI : MonoBehaviour
     {
         for (int i = 0; i < bulletsShotPerRound; i++)
         {
+            FindObjectOfType<AudioManager>().Play("Shoot");
             Instantiate(plazmaBullet, firePoint.position, firePoint.rotation);
             yield return new WaitForSeconds(.25f);
         }
