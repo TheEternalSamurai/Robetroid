@@ -79,6 +79,9 @@ public class EnemyDamage : MonoBehaviour
         if (gameObject.name == "BossSprite")
         {
             FindObjectOfType<AudioManager>().Play("Victory");
+            GameObject ui = GameObject.Find("UI");
+            GameObject winMenu = ui.transform.Find("WinMenu").gameObject;
+            winMenu.SetActive(true);
             Time.timeScale = 0f;
         }
     }

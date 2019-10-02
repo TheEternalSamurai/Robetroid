@@ -29,6 +29,8 @@ public class InGameMenuManager : MonoBehaviour
     
     public void Restart()
     {
+        FindObjectOfType<AudioManager>().Stop("Stage Music");
+        FindObjectOfType<AudioManager>().Play("Stage Music");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
