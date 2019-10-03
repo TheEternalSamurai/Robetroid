@@ -15072,7 +15072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whiteMaterial: {fileID: 2100000, guid: 116cfcf32d2a10e40bbde30565ae4d61, type: 2}
   flashDurationTime: 0.2
-  maxHealth: 5
+  maxHealth: 30
   numOfExplosions: 5
   timeBetweenExplosions: 1
   healthBar: {fileID: 1684134013}
