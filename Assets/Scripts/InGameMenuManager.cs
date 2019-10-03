@@ -36,6 +36,7 @@ public class InGameMenuManager : MonoBehaviour
 
     public void Quit()
     {
+        FindObjectOfType<AudioManager>().Play("Stage Music");
         SceneManager.LoadScene("MainMenu");
     }
 

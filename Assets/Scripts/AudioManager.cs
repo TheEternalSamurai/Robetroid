@@ -34,11 +34,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name != "MainMenu")
-            Play("Stage Music");
-        else
-            Stop("Stage Music");
-            
+        Play("Stage Music");       
     }
 
     public void Play(string name)
