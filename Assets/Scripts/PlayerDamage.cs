@@ -18,7 +18,7 @@ public class PlayerDamage : MonoBehaviour
     [Header("UI")]
     public Image healthBar;
     public TextMeshProUGUI livesText;
-    public Canvas gameOverScreen;
+    public GameObject gameOverScreen;
 
     [HideInInspector]
     public int livesRemaining;
