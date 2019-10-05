@@ -13,8 +13,9 @@ public class Patrol : MonoBehaviour
         transform.Translate(Vector2.right * speed * Time.deltaTime);
 
         RaycastHit2D groundHit = Physics2D.Raycast(groundCheck.position, Vector2.down, groundDetectionDistance, LayerMask.GetMask("Ground"));
+        RaycastHit2D sideHit = Physics2D.Raycast(groundCheck.position, Vector2.right, 0f, LayerMask.GetMask("Ground"));
 
-        if (!groundHit.collider)
+        if (!groundHit.collider || sideHit)
             FlipDirection();
     }
 
