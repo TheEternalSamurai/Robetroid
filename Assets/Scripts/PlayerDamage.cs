@@ -95,9 +95,22 @@ public class PlayerDamage : MonoBehaviour
         anim.SetBool("hasBeenHit", true);
 
         yield return new WaitForSeconds(knockBackTime);
+        StartCoroutine("Flash");
 
         controller.enabled = true;
         anim.SetBool("hasBeenHit", false);
+    }
+
+    private IEnumerator Flash()
+    {
+        while (hasBeenHit)
+        {
+            spriteRenderer.enabled = false;
+            yield return new WaitForFixedUpdate();
+            spriteRenderer.enabled = true;
+            yield return new WaitForFixedUpdate();
+        }
+        Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), false);
     }
 
     private IEnumerator ReceiveDamage()
@@ -110,7 +123,6 @@ public class PlayerDamage : MonoBehaviour
 
         yield return new WaitForSeconds(invulnerableTime);
 
-        Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), false);
         hasBeenHit = false;
     }
 
